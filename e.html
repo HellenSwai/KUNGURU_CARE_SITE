@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diakonia Salei Levolosi Parish</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #f8ba00;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --card-bg: #f8f9fa;
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #4a90e2;
+            --secondary-color: #ffd700;
+            --accent-color: #ff6b6b;
+            --text-color: #ffffff;
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .top-bar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .navbar {
+            background-color: var(--bg-color) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .hero-swiper {
+            height: 70vh;
+            width: 100%;
+        }
+        
+        .hero-slide {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: #333;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .program-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .language-switcher {
+            position: fixed;
+            top: calc(50% + 60px);
+            right: 20px;
+            z-index: 1000;
+            background: var(--secondary-color);
+            color: #333;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-swiper {
+                height: 50vh;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    <span data-en="P.O.BOX 12931, Arusha, Tanzania" data-sw="S.L.P 12931, Arusha, Tanzania">P.O.BOX 12931, Arusha, Tanzania</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <i class="fas fa-phone me-2"></i>
+                    <span>+255 745862106</span>
+                    <span class="ms-3">
+                        <i class="fas fa-envelope me-2"></i>
+                        saleilevolosi@gmail.com
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-church me-2"></i>
+                Diakonia Salei Levolosi Parish
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" data-en="Home" data-sw="Nyumbani">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-en="About" data-sw="Kuhusu">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#programs" data-en="Programs" data-sw="Mipango">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#volunteer" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-en="Contact" data-sw="Mawasiliano">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Swiper -->
+    <section id="home">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide hero-slide" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop')">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 data-en="Serving with Love" data-sw="Kutumika kwa Upendo">Serving with Love</h1>
+                        <p data-en="Diakonia Salei Levolosi Parish - Spreading God's love through service" data-sw="Parokia ya Diakonia Salei Levolosi - Kueneza upendo wa Mungu kwa huduma">Diakonia Salei Levolosi Parish - Spreading God's love through service</p>
+                        <div>
+                            <button class="btn btn-primary btn-lg me-3" data-en="Join Us" data-sw="Jiunge Nasi">Join Us</button>
+                            <button class="btn btn-secondary btn-lg" data-en="Learn More" data-sw="Jifunze Zaidi">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide hero-slide" style="background-image: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=800&fit=crop')">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 data-en="Children Education" data-sw="Elimu ya Watoto">Children Education</h1>
+                        <p data-en="Empowering children through quality education and support" data-sw="Kuwawezesha watoto kupitia elimu bora na msaada">Empowering children through quality education and support</p>
+                        <button class="btn btn-primary btn-lg" data-en="Support Education" data-sw="Unga Mkono Elimu">Support Education</button>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide hero-slide" style="background-image: url('https://images.unsplash.com/photo-1593113616828-6f22bebb6e8b?w=1200&h=800&fit=crop')">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 data-en="Community Outreach" data-sw="Ufikiaji wa Jamii">Community Outreach</h1>
+                        <p data-en="Reaching out to those in need in our community" data-sw="Kuwafikia wale wanaohitaji msaada katika jamii yetu">Reaching out to those in need in our community</p>
+                        <button class="btn btn-primary btn-lg" data-en="Get Involved" data-sw="Shiriki">Get Involved</button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Our Story" data-sw="Historia Yetu">Our Story</h2>
+                <h3 data-en="DIAKONIA SERVICE" data-sw="HUDUMA YA UDIAKONIA">HUDUMA YA UDIAKONIA</h3>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 p-4">
+                        <h4 data-en="About Diakonia" data-sw="Kuhusu Udiakonia">Kuhusu Udiakonia</h4>
+                        <p data-en="Diakonia is a service of love provided by the church or believers to people in need, such as the poor, sick, orphans, widows and the hopeless, with the aim of showing Christ's love through action." data-sw="Udiakonia ni huduma ya upendo inayotolewa na kanisa au waumini kwa watu walioko katika hali ya uhitaji, kama maskini, wagonjwa, yatima, wajane na waliokata tamaa, kwa lengo la kuonyesha upendo wa Kristo kwa vitendo.">Udiakonia ni huduma ya upendo inayotolewa na kanisa au waumini kwa watu walioko katika hali ya uhitaji, kama maskini, wagonjwa, yatima, wajane na waliokata tamaa, kwa lengo la kuonyesha upendo wa Kristo kwa vitendo.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 p-4">
+                        <h4 data-en="Our Mission" data-sw="Dhamira Yetu">Our Mission</h4>
+                        <p data-en="To serve God by serving others through acts of love, justice, and compassion—responding to human need, defending the dignity of all people, and working towards healing, empowerment, and transformation in individuals and communities." data-sw="Kumtumikia Mungu kwa kuwahudumia wengine kupitia vitendo vya upendo, haki, na huruma - kujibu mahitaji ya kibinadamu, kutetea hadhi ya watu wote, na kufanya kazi kuelekea uponyaji, uwezeshaji, na mabadiliko kwa watu binafsi na jamii.">To serve God by serving others through acts of love, justice, and compassion—responding to human need, defending the dignity of all people, and working towards healing, empowerment, and transformation in individuals and communities.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 p-4">
+                        <h4 data-en="Our Vision" data-sw="Maono Yetu">Our Vision</h4>
+                        <p data-en="To see a compassionate and just society where the love of Christ is expressed through practical service, and where every person — especially the vulnerable — is treated with dignity, supported in their needs, and empowered to live with hope and purpose." data-sw="Kuona jamii yenye huruma na haki ambapo upendo wa Kristo unaonyeshwa kupitia huduma za vitendo, na ambapo kila mtu - hasa wale walio hatarini - anachukuliwa kwa hadhi, anasaidiwa katika mahitaji yake, na anawezesha kuishi kwa matumaini na kusudi.">To see a compassionate and just society where the love of Christ is expressed through practical service, and where every person — especially the vulnerable — is treated with dignity, supported in their needs, and empowered to live with hope and purpose.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 p-4">
+                        <h4 data-en="Core Values" data-sw="Maadili Muhimu">Core Values</h4>
+                        <p data-en="We are guided by the following values:" data-sw="Tunaongozwa na maadili yafuatayo:">We are guided by the following values:</p>
+                        <div class="row text-center mt-3">
+                            <div class="col-3">
+                                <i class="fas fa-heart text-danger fa-2x"></i>
+                                <p class="mt-2" data-en="LOVE" data-sw="UPENDO">LOVE</p>
+                            </div>
+                            <div class="col-3">
+                                <i class="fas fa-praying-hands text-primary fa-2x"></i>
+                                <p class="mt-2" data-en="FAITH" data-sw="IMANI">FAITH</p>
+                            </div>
+                            <div class="col-3">
+                                <i class="fas fa-star text-warning fa-2x"></i>
+                                <p class="mt-2" data-en="HOPE" data-sw="MATUMAINI">HOPE</p>
+                            </div>
+                            <div class="col-3">
+                                <i class="fas fa-dove text-success fa-2x"></i>
+                                <p class="mt-2" data-en="PEACE" data-sw="AMANI">PEACE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="stat-item">
+                        <span class="stat-number">63</span>
+                        <p data-en="Kids with support" data-sw="Watoto waliopata msaada">Kids with support</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="stat-item">
+                        <span class="stat-number">401</span>
+                        <p data-en="Kids in need" data-sw="Watoto wanaohitaji msaada">Kids in need</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Our Programs" data-sw="Mipango Yetu">Our Programs</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-graduation-cap program-icon"></i>
+                        <h5 data-en="Children Education" data-sw="Elimu ya Watoto">Children Education</h5>
+                        <p data-en="Helping children in education by ensuring that those who drop out return to school and providing them with school needs." data-sw="Kusaidia watoto katika elimu kwa kuhakikisha wale walioacha shule wanarudi na kuwapa mahitaji ya shule.">Helping children in education by ensuring that those who drop out return to school and providing them with school needs.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-female program-icon"></i>
+                        <h5 data-en="Women Empowerment" data-sw="Uwezeshaji wa Wanawake">Women Empowerment</h5>
+                        <p data-en="Making efforts to connect homeless children with their families to get the best care and close attention, or shelter if reunification fails." data-sw="Kufanya juhudi za kuwaambatanisha watoto wasio na makazi na familia zao ili wapate huduma bora na uongozi wa karibu, au makazi ikiwa muungano utashindikana.">Making efforts to connect homeless children with their families to get the best care and close attention, or shelter if reunification fails.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-heart program-icon"></i>
+                        <h5 data-en="Rehabilitation Counseling" data-sw="Ushauri wa Uponyaji">Rehabilitation Counseling</h5>
+                        <p data-en="Helping children who are addicted to drugs, disabled, or treated with acts of violence, to build them mentally to be able to live their dreams." data-sw="Kusaidia watoto walioathiriwa na dawa za kulevya, walemavu, au waliopitia vitendo vya unyanyasaji, ili kuwajenga kiakili ili waweze kuishi ndoto zao.">Helping children who are addicted to drugs, disabled, or treated with acts of violence, to build them mentally to be able to live their dreams.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-medkit program-icon"></i>
+                        <h5 data-en="Health Services" data-sw="Huduma za Afya">Health Services</h5>
+                        <p data-en="Providing health insurance services to street children who cannot afford medical and food expenses because of poverty." data-sw="Kutoa huduma za bima ya afya kwa watoto wa mitaani ambao hawawezi kumudu gharama za matibabu na chakula kwa sababu ya umaskini.">Providing health insurance services to street children who cannot afford medical and food expenses because of poverty.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-utensils program-icon"></i>
+                        <h5 data-en="Food Program" data-sw="Mpango wa Chakula">Food Program</h5>
+                        <p data-en="Providing food and clean water to starving kids and kids living in centers. Food for children is very important." data-sw="Kutoa chakula na maji safi kwa watoto wanaokua njaa na watoto wanaoishi katika vituo. Chakula kwa watoto ni muhimu sana.">Providing food and clean water to starving kids and kids living in centers. Food for children is very important.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-home program-icon"></i>
+                        <h5 data-en="Diakonia Outreach" data-sw="Ufikiaji wa Udiakonia">Diakonia Outreach</h5>
+                        <p data-en="In cases where reunification of street children with their families fails, we take responsibility of sheltering street kids with homes or centers and clothing." data-sw="Katika mazingira ambapo muungano wa watoto wa mitaani na familia zao unashindikana, tunachukua jukumu la kuwapatia watoto wa mitaani makazi au vituo na mavazi.">In cases where reunification of street children with their families fails, we take responsibility of sheltering street kids with homes or centers and clothing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section id="volunteer" class="py-5" style="background-color: var(--card-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Become a Volunteer Today" data-sw="Kuwa Mjitolea Leo">Become a Volunteer Today</h2>
+                <p data-en="Volunteer with us in study of street kids, counselling and other services" data-sw="Jitolee pamoja nasi katika utafiti wa watoto wa mitaani, ushauri na huduma nyingine">Volunteer with us in study of street kids, counselling and other services</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label" data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" data-en="Email" data-sw="Barua Pepe">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" data-en="Phone" data-sw="Simu">Phone</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" data-en="Upload your CV" data-sw="Pakia CV yako">Upload your CV</label>
+                                <input type="file" class="form-control" accept=".pdf,.doc,.docx">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" data-en="Submit" data-sw="Wasilisha">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <div class="card p-4 text-center">
+                        <h5 data-en="Staff and Volunteers" data-sw="Wafanyakazi na Wajitolea">Staff and Volunteers</h5>
+                        <p data-en="Welcome to serve together" data-sw="Karibu kutumika pamoja">Welcome to serve together</p>
+                        <div class="mt-3">
+                            <h6>Maria</h6>
+                            <p data-en="Boss" data-sw="Mkuu">Boss</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4 text-center">
+                        <h5 data-en="Get in touch" data-sw="Wasiliana nasi">Get in touch</h5>
+                        <div class="mt-3">
+                            <h6>Gerald Mollel</h6>
+                            <p data-en="CHILDREN'S SERVICE COORDINATOR" data-sw="MRATIBU HUDUMA YA WATOTO">MRATIBU HUDUMA YA WATOTO USHIRKA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Contact Information" data-sw="Maelezo ya Mawasiliano">Contact Information</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 p-4">
+                        <h5 data-en="Contact Details" data-sw="Maelezo ya Mawasiliano">Contact Details</h5>
+                        <div class="mb-3">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            <span>P.O.BOX 12931, Arusha, Tanzania</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-phone text-primary me-2"></i>
+                            <span>+255 745862106</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-envelope text-primary me-2"></i>
+                            <span>saleilevolosi@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 p-4">
+                        <h5 data-en="Send Message" data-sw="Tuma Ujumbe">Send Message</h5>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" data-en-placeholder="Your Name" data-sw-placeholder="Jina Lako">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" data-en-placeholder="Your Email" data-sw-placeholder="Barua Pepe Yako">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Your Message" data-en-placeholder="Your Message" data-sw-placeholder="Ujumbe Wako"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-en="Send Message" data-sw="Tuma Ujumbe">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 data-en="Diakonia Salei Levolosi Parish" data-sw="Parokia ya Diakonia Salei Levolosi">Diakonia Salei Levolosi Parish</h5>
+                    <p data-en="Serving God by serving others through acts of love, justice, and compassion." data-sw="Kumtumikia Mungu kwa kuwahudumia wengine kupitia vitendo vya upendo, haki, na huruma.">Serving God by serving others through acts of love, justice, and compassion.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-2x"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 data-en="Quick Links" data-sw="Viungo vya Haraka">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#about" class="text-white" data-en="Our Story" data-sw="Historia Yetu">Our Story</a></li>
+                        <li><a href="#programs" class="text-white" data-en="Programs" data-sw="Mipango">Programs</a></li>
+                        <li><a href="#volunteer" class="text-white" data-en="Become a volunteer" data-sw="Kuwa mjitolea">Become a volunteer</a></li>
+                        <li><a href="#contact" class="text-white" data-en="Partner with us" data-sw="Shirikiana nasi">Partner with us</a></li>
+                        <li><a href="#" class="text-white" data-en="Newsroom" data-sw="Chumba cha Habari">Newsroom</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 data-en="Contact Info" data-sw="Maelezo ya Mawasiliano">Contact Info</h5>
+                    <p><i class="fas fa-phone me-2"></i> +255 745862106</p>
+                    <p><i class="fas fa-envelope me-2"></i> saleilevolosi@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> P.O.BOX 12931, ARUSHA, TANZANIA</p>
+                    <a href="#" class="btn btn-outline-light btn-sm" data-en="Get Direction" data-sw="Pata Mwelekeo">Get Direction</a>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2025 <span data-en="Diakonia Salei Levolosi Parish. All rights reserved." data-sw="Parokia ya Diakonia Salei Levolosi. Haki zote zimehifadhiwa.">Diakonia Salei Levolosi Parish. All rights reserved.</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Switcher -->
+    <button class="theme-switcher" onclick="toggleTheme()">
+        <i class="fas fa-palette"></i>
+    </button>
+
+    <!-- Language Switcher -->
+    <button class="language-switcher" onclick="toggleLanguage()">
+        <span id="lang-text">SW</span>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+
+    <script>
+        // Theme Switcher
+        let currentTheme = 'light';
+        
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Update swiper navigation colors
+            const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
+            swiperButtons.forEach(button => {
+                button.style.color = currentTheme === 'dark' ? '#fff' : '#000';
+            });
+        }
+
+        // Language Switcher
+        let currentLanguage = 'en';
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'sw' : 'en';
+            const langText = document.getElementById('lang-text');
+            langText.textContent = currentLanguage === 'en' ? 'SW' : 'EN';
+            
+            // Update all elements with data attributes
+            const elements = document.querySelectorAll('[data-en][data-sw]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${currentLanguage}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // Update placeholders
+            const placeholderElements = document.querySelectorAll(`[data-${currentLanguage}-placeholder]`);
+            placeholderElements.forEach(element => {
+                const placeholder = element.getAttribute(`data-${currentLanguage}-placeholder`);
+                if (placeholder) {
+                    element.setAttribute('placeholder', placeholder);
+                }
+            });
+        }
+
+        // Initialize Swiper
+        const heroSwiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate stats on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const finalNumber = parseInt(stat.textContent);
+                let currentNumber = 0;
+                const increment = finalNumber / 50;
+                
+                const timer = setInterval(() => {
+                    currentNumber += increment;
+                    if (currentNumber >= finalNumber) {
+                        stat.textContent = finalNumber;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(currentNumber);
+                    }
+                }, 30);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stats-section')) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats section
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                const inputs = form.querySelectorAll('input[required], textarea[required]');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+                
+                if (isValid) {
+                    // Show success message
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'alert alert-success mt-3';
+                    successMsg.textContent = currentLanguage === 'en' ? 
+                        'Thank you! Your message has been sent successfully.' : 
+                        'Asante! Ujumbe wako umetumwa kikamilifu.';
+                    
+                    form.appendChild(successMsg);
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        successMsg.remove();
+                    }, 5000);
+                }
+            });
+        });
+
+        // Initialize tooltips and popovers
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.backgroundColor = currentTheme === 'dark' ? 
+                    'rgba(26, 26, 26, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.style.backdropFilter = 'none';
+                navbar.style.backgroundColor = currentTheme === 'dark' ? 
+                    'var(--bg-color)' : 'var(--bg-color)';
+            }
+        });
+
+        // Add card hover effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Mobile menu improvements
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarToggler.click();
+                }
+            });
+        });
+
+        // Preload images for better performance
+        const imageUrls = [
+            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1593113616828-6f22bebb6e8b?w=1200&h=800&fit=crop'
+        ];
+        
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+        });
+
+        // Add progressive enhancement
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Service worker registration would go here for offline functionality
+                console.log('Progressive Web App features available');
+            });
+        }
+
+        // Add accessibility improvements
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close any open modals or dropdowns
+                const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
+                openDropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
+
+        // Initialize AOS (Animate On Scroll) effect simulation
+        function addScrollAnimations() {
+            const cards = document.querySelectorAll('.card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+                observer.observe(card);
+            });
+        }
+
+        // Initialize animations after DOM is loaded
+        document.addEventListener('DOMContentLoaded', addScrollAnimations);
+    </script>
+
+    <style>
+        /* Additional responsive improvements */
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .theme-switcher, .language-switcher {
+                right: 10px;
+            }
+            
+            .language-switcher {
+                top: calc(50% + 50px);
+            }
+        }
+        
+        /* Enhanced animations */
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Loading states */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Improved swiper styling */
+        .swiper-button-next,
+        .swiper-button-prev {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 20px;
+        }
+        
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--secondary-color);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</body>
+</html>
